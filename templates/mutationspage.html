@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Imported Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geo:ital@0;1&family=Honk&family=Jersey+25&family=Silkscreen:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- CSS stylesheet file -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='mutationspage.css') }}"
+    />
+    <!-- Fa-Icons -->
+    <script
+      src="https://kit.fontawesome.com/6d75f4ef37.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Astral Arcade</title>
+  </head>
+  <body>
+    <!-- Display tab with mutation cards -->
+    <section class="mut-display-tab" id="mutations-container">
+      <p class="mut-spin-message">Your spin log</p>
+      <!-- Current mutation pending card -->
+      <div class="pend-mut-card" id="pending-card" style="visibility: hidden">
+        <p>
+          <i class="fa-solid fa-spinner fa-spin-pulse"></i> PENDING MUTATION...
+        </p>
+      </div>
+    </section>
+
+    <div class="content">
+      <!-- Mutation spinning TV screen -->
+      <section class="mut-tv-screen">
+        <div class="currency-corner">
+          <div class="currency-block">
+            <div class="currency">
+              <img
+                src="{{ url_for('static', filename='Images/dna.png') }}"
+                alt="dna-image"
+                width="27"
+                height="27"
+              />
+              <p id="dna-amount">{{ user.dna_amount }}</p>
+              <img
+                src="{{ url_for('static', filename='Images/rna.png') }}"
+                alt="rna-image"
+                width="25"
+                height="25"
+              />
+              <p id="rna-amount">{{ user.rna_amount }}</p>
+              <img
+                src="{{ url_for('static', filename='Images/stardust.png') }}"
+                alt="stardust-image"
+                width="27"
+                height="27"
+              />
+              <p id="stardust-amount">{{ user.stardust_amount }}</p>
+            </div>
+          </div>
+          <div class="currency-block">
+            <div class="currency">
+              <span>Spin for </span>
+              <select id="currency-select">
+                <option value="dna" selected>DNA</option>
+                <option value="stardust">Stardust</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <h2 id="progress-display">Press "Spin" to try your luck</h2>
+        <h1 id="result-display" style="visibility: hidden">
+          <span id="result-display-stars">5</span>
+          <img
+            src="{{ url_for('static', filename='Images/mut-star.png') }}"
+            alt="mut-star-image"
+            width="100"
+            style="filter: drop-shadow(0 0 0.75rem #ffffffd8)"
+          />
+          MUTATION
+        </h1>
+      </section>
+      <!-- Mutation spinning screen end -->
+
+      <!-- Spin button section -->
+      <section class="spin-section">
+        <button class="spinning-button" id="spin-button">
+          <p>✮ SPIN ✮</p>
+        </button>
+      </section>
+    </div>
+
+    <script>
+      window.user = {{ user|safe }};
+      window.spin_cost = Object.freeze({{ spin_cost|safe }})
+    </script>
+    <script src="{{ url_for('static', filename='mutationspage.js') }}"></script>
+  </body>
+</html>

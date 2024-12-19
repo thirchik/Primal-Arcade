@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Imported Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geo:ital@0;1&family=Jersey+25&family=Silkscreen:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Fa-Icons -->
+    <script
+      src="https://kit.fontawesome.com/6d75f4ef37.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- CSS file -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='normalize.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='welcomepage.css') }}"
+    />
+    <title>Astral Arcade</title>
+  </head>
+  <body>
+    <!-- TV frame with server name n stuff start -->
+    <section>
+      <div id="frame">
+        <div id="stardeco">
+          <img
+            src="{{ url_for('static', filename='Images/striking-star.png') }}"
+            alr="striking-star-deco"
+          />
+        </div>
+        <!-- TV screen with info -->
+        <div>
+          <!-- Text within the screen -->
+          <p id="astralogo">
+            Astral<br />
+            Arcade<br />
+            <span id="subheader"> Semi-Realism Server </span>
+          </p>
+        </div>
+        <div id="stardeco2">
+          <img
+            src="{{ url_for('static', filename='Images/flaming-star.png') }}"
+            alt="flaming_star_deco"
+          />
+        </div>
+      </div>
+    </section>
+    <!-- TV frame end -->
+    <!-- Enter button to the next page -->
+    <section>
+      <a id="button" href="{{ url_for('page_main') }}">
+        <i
+          class="fa-sharp fa-solid fa-chevron-right fa-fade"
+          style="--fa-animation-duration: 0.8s; --fa-fade-opacity: 0.4"
+        ></i>
+        Enter
+      </a>
+    </section>
+  </body>
+</html>
