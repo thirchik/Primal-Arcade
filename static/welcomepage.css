@@ -1,5 +1,11 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  min-height: 900px;
+  min-height: 100vh;
   background-image: radial-gradient(
     circle,
     rgba(40, 40, 60, 1) 30%,
@@ -7,67 +13,266 @@ body {
   );
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  animation: zoomFadeIn 0.8s ease-out forwards;
+  padding: 2rem;
 }
 
-#frame {
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: calc(100vh - 5.5rem);
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes zoomFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(1);
+  }
+  to {
+    opacity: 1;
+    transform: scale(0.95);
+  }
+}
+
+/* ===== TV FRAME STYLES ===== */
+.tv-section {
+  width: 100%;
+  max-width: 950px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  margin-top: auto; 
+}
+
+.tv-frame {
   height: 600px;
-  width: 850px;
+  width: 100%;
+  max-width: 850px;
+  margin: 0 auto;
   border-image: url("/static/Images/tv-frame.png") 50 / 40px;
   background-image: url("/static/Images/glitch-effect.gif");
   background-size: cover;
-  text-align: left;
+  background-position: center;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: clamp(2rem, 5vw, 5rem);
 }
 
-p {
-  color: #fff;
+.tv-screen-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
 }
 
-#astralogo {
+/* ===== TYPOGRAPHY ===== */
+.tv-header {
+  text-align: left;
+}
+
+h1 {
   font-family: "Jersey 25", sans-serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 150px;
+  font-size: clamp(3rem, 10vw, 150px);
+  color: #fff;
   text-shadow: 0px 0px 35px #ffffffd8;
+  line-height: 0.8;
+  margin-bottom: 0.5rem;
+  animation: rhythmicFlicker 2s ease-in-out infinite;
 }
 
-#subheader {
+@keyframes rhythmicFlicker {
+  /* Long pause - calm state */
+  0%, 40% {
+    opacity: 1;
+    text-shadow: 0px 0px 35px #ffffffd8;
+  }
+  
+  /* First flicker */
+  41%, 43% {
+    opacity: 0.7;
+    text-shadow: 0px 0px 15px #ffffff80;
+  }
+  44%, 45% {
+    opacity: 1;
+    text-shadow: 0px 0px 35px #ffffffd8;
+  }
+  
+  /* Second flicker */
+  46%, 48% {
+    opacity: 0.65;
+    text-shadow: 0px 0px 12px #ffffff70;
+  }
+  49%, 50% {
+    opacity: 1;
+    text-shadow: 0px 0px 35px #ffffffd8;
+  }
+  
+  /* Extended flicker*/
+  51%, 58% {
+    opacity: 0.6;
+    text-shadow: 0px 0px 10px #ffffff60;
+  }
+  59%, 62% {
+    opacity: 0.85;
+    text-shadow: 0px 0px 20px #ffffffa0;
+  }
+  63%, 68% {
+    opacity: 0.55;
+    text-shadow: 0px 0px 8px #ffffff50;
+  }
+  69%, 72% {
+    opacity: 0.9;
+    text-shadow: 0px 0px 25px #ffffffb0;
+  }
+  
+  /* Return to calm */
+  73%, 100% {
+    opacity: 1;
+    text-shadow: 0px 0px 35px #ffffffd8;
+  }
+}
+
+.server-info {
   font-family: "Geo", sans-serif;
   font-weight: 100;
   font-style: normal;
-  font-size: 35px;
+  font-size: clamp(1.25rem, 4vw, 35px);
+  color: #fff;
   text-shadow: 0px 0px 18px #ffffff;
+  margin: 0;
 }
 
-#button {
-  background-color: #8b2020;
-  color: white;
-  display: block;
+.server-type {
+  margin-right: 0.5rem;
+}
+
+.game-name {
+  color: #c92525;
+  text-shadow: 0 0 5px #c92525;
+}
+
+/* ===== TERMINAL LOADER ===== */
+.terminal-loader {
+  font-family: "Silkscreen", sans-serif;
+  font-size: clamp(10px, 2vw, 12px);
+  color: #8a9eacd8;
+  text-shadow: 0 0 5px #8a9eacd8;
+}
+
+.loader-line {
+  margin: 5px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  opacity: 0;
+  animation: typewriter 1s steps(30, end) forwards;
+}
+
+
+.loader-line:nth-child(1) { animation-delay: 0s; }
+.loader-line:nth-child(2) { animation-delay: 0.5s; }
+.loader-line:nth-child(3) { animation-delay: 1s; }
+.loader-line:nth-child(4) { animation-delay: 1.5s; }
+.loader-line:nth-child(5) { animation-delay: 2s; }
+.loader-line:nth-child(6) { animation-delay: 2.5s; }
+
+@keyframes typewriter {
+  from {
+    width: 0;
+    opacity: 0.8;
+  }
+  to {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+/* ===== BUTTON STYLES ===== */
+.cta-section {
+  margin: 2rem auto 2rem auto; 
+  flex-shrink: 0;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  min-width: 210px;
+  padding: 0 1.5rem;
   height: 70px;
-  line-height: 70px;
-  text-decoration: none;
-  width: 210px;
-  text-align: center;
-  font-size: 30px;
+  font-size: clamp(1.25rem, 5vw, 2rem);
   font-family: "Silkscreen", sans-serif;
   font-weight: 400;
   font-style: normal;
-  margin-top: 30px;
+  text-shadow: #fff 0px 0px 5px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: transparent;
+  border: solid 3px #c92525;
+  box-shadow: 
+    0 0 10px #ec4f4f,
+    inset 0 0 8px #ec4f4f;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
-#stardeco {
-  margin-bottom: 300px;
-  margin-right: -15px;
-  transform: rotate(-10deg);
-  filter: drop-shadow(0 0 0.75rem #ffffffd8);
+.button:hover {
+  transform: scale(1.05);
+  box-shadow: 
+    0 0 15px #ff6464,
+    inset 0 0 12px #ff6464;
 }
 
-#stardeco2 {
-  margin-bottom: 50px;
-  margin-left: -40px;
-  filter: drop-shadow(0 0 0.75rem #ffffffd8);
+.button:focus-visible {
+  outline: 2px solid #c92525;
+  outline-offset: 2px;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
+  
+  .tv-frame {
+    height: auto;
+    min-height: 500px;
+    padding: 2rem;
+  }
+  
+  .loader-line {
+    white-space: normal;
+    word-break: break-word;
+  }
+  
+  .button {
+    white-space: normal;
+    padding: 0 1rem;
+    height: auto;
+    min-height: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tv-frame {
+    min-height: 400px;
+  }
+  
+  .server-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
 }

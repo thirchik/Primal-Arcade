@@ -77,10 +77,10 @@ with app.app_context():
     )
 
     user = schema.User(
-        name="Username",
+        name="Shaboom",
         dna_amount=283,
         rna_amount=3257,
-        stardust_amount=207,
+        stardust_amount=1437,
         active_role_id=1,
     )
     db.session.add(user)

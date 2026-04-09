@@ -26,122 +26,110 @@
       type="text/css"
       href="{{ url_for('static', filename='mainpage.css') }}"
     />
-    <title>Astral Arcade</title>
+    <title>Primal Arcade Server</title>
   </head>
   <body>
     <header>
-      <div class="headersection">
-        <!-- Profile picture of the user account -->
-        <div class="profile-picture-container">
-          <img
-            src="{{ url_for('static', filename='Images/player-profile-picture.png') }}"
-            alt="dino-profile-picture"
-            id="profilepicture"
-          />
+  <div class="headersection">
+    <!-- Profile picture container (using CSS background-image) -->
+    <div class="profile-picture-container">
+      <div id="profilepicture"></div>
+    </div>
+    
+    <!-- Player info column (name, currency, role all stacked vertically) -->
+    <div id="playerinfo">
+      <!-- Player username -->
+      <div id="playername">
+        <p class="headertext">{{ user.name }}</p>
+      </div>
+      
+      <!-- Player balance display -->
+      <div id="currency">
+        <div class="currency-item" data-tooltip="DNA">
+          <img src="{{ url_for('static', filename='Images/dna.png') }}" alt="dna-image" width="27" height="27" />
+          <span class="tooltip-text">DNA</span>
+          <p>{{ user.dna_amount }}</p>
         </div>
-        <!-- Currency balance of the user -->
-        <div id="playerinfo">
-          <!-- Player username -->
-          <div id="playername">
-            <p class="headertext">{{ user.name }}</p>
-          </div>
-          <!-- End player username -->
-          <!-- Player balance display -->
-          <div id="currency">
-            <div class="currency-item">
-              <img
-                src="{{ url_for('static', filename='Images/dna.png') }}"
-                alt="dna-image"
-                width="27"
-                height="27"
-              />
-              <p>{{ user.dna_amount }}</p>
-            </div>
-            <div class="currency-item">
-              <img
-                src="{{ url_for('static', filename='Images/rna.png') }}"
-                alt="rna-image"
-                width="25"
-                height="25"
-              />
-              <p>{{ user.rna_amount }}</p>
-            </div>
-            <div class="currency-item">
-              <img
-                src="{{ url_for('static', filename='Images/stardust.png') }}"
-                alt="stardust-image"
-                width="27"
-                height="27"
-              />
-              <p>{{ user.stardust_amount }}</p>
-            </div>
-          </div>
-          <!-- End display balance -->
-          <!-- Role dropdown menu -->
-          <div class="rolemenu">
-            <label for="roles">you are...</label>
-            <div class="dropdown">
-              <select id="roles">
-                {% for role in roles %}
-                <option value="{{ role.id }}" data-role>
-                  {{ role.name|upper }}
-                </option>
-                {% endfor %}
-              </select>
-            </div>
-          </div>
+        <div class="currency-item" data-tooltip="RNA">
+          <img src="{{ url_for('static', filename='Images/rna.png') }}" alt="rna-image" width="25" height="25" />
+          <span class="tooltip-text">RNA</span>
+          <p>{{ user.rna_amount }}</p>
+        </div>
+        <div class="currency-item" data-tooltip="Stardust">
+          <img src="{{ url_for('static', filename='Images/stardust.png') }}" alt="stardust-image" width="27" height="27" />
+          <span class="tooltip-text">Stardust</span>
+          <p>{{ user.stardust_amount }}</p>
         </div>
       </div>
-      <!-- Astral Arcade logo -->
-      <div class="headersectionastral">
-        <div id="astralname">
-          <p>
-            Astral Arcade
-            <img
-              src="{{ url_for('static', filename='Images/flaming-star.png') }}"
-              alt="flaming-star-image"
-              id="flamingstar"
-            />
-          </p>
+      
+      <!-- Role dropdown menu -->
+      <div class="rolemenu">
+        <label for="roles">you are...</label>
+        <div class="dropdown">
+          <select id="roles">
+            {% for role in roles %}
+            <option value="{{ role.id }}" data-role>
+              {{ role.name|upper }}
+            </option>
+            {% endfor %}
+          </select>
         </div>
       </div>
-      <!-- Astral Arcade logo end -->
-      <div class="headersection" style="justify-content: flex-end">
-        <img
-          src="{{ url_for('static', filename='Images/path-of-titans-logo.png') }}"
-          alt="path-of-titans-logo-display"
-          id="gamelogo"
-        />
-      </div>
-    </header>
+    </div>
+  </div>
+  
+  <!-- Primal Arcade logo -->
+  <div class="headersectionarcade">
+    <div id="arcadename">
+      <p>PRIMAL ARCADE</p>
+    </div>
+  </div>
+  
+  <!-- Game logo -->
+  <div class="headersection" style="justify-content: flex-end">
+    <img src="{{ url_for('static', filename='Images/path-of-titans-logo.png') }}" alt="path-of-titans-logo-display" id="gamelogo" />
+  </div>
+</header>
     <!-- Webpage header end -->
 
     <!-- Banner info section -->
-    <section class="banner">
-      <div class="bannerinfo">
-        <h2>current season is...</h2>
-        <h1>WINTER</h1>
-        <p class="seasoninfo">
-          You gain additional 850 combat weight during winter, as well as
-          becoming slower, unless you're a feathered or furred dinosaur.
-        </p>
-        <br />
-        <h2>current natural disaster is...</h2>
-        <h1>BLIZZARD</h1>
-        <p class="seasoninfo">
-          Blizzard impacts dinosaurs of all ages, causing health to lower
-          rapidly. Stay the in shelter to slow down the hypothermia and gain
-          advantage.
-        </p>
-        <p
-          class="seasoninfo"
-          style="font-size: 15px; text-decoration: underline"
-        >
-          !Slower-healing large dinosaurs are more vulnerable, making it crucial
-          to seek safety!
-        </p>
+<section class="banner">
+  <div class="bannerinfo">
+    <div class="season-header">
+      <h2>current season is...</h2>
+    </div>
+    <h1 id="seasonName">WINTER</h1>
+      <div class="timer-container">
+        <span class="timer-display" id="seasonTimer">10:00</span>
       </div>
-    </section>
+    <p class="seasoninfo" id="seasonDescription">
+      You gain additional 850 combat weight during winter, as well as
+      becoming slower, unless you're a feathered or furred dinosaur.
+    </p>
+    <br />
+    
+    <div class="disaster-header">
+      <h2>current natural disaster is...</h2>
+    </div>
+    <h1 id="disasterName">BLIZZARD</h1>
+      <div class="timer-container">
+        <span class="timer-display" id="disasterTimer">03:00</span>
+      </div>
+    <p class="seasoninfo" id="disasterDescription">
+      Blizzard impacts dinosaurs of all ages, causing health to lower
+      rapidly. Stay in shelter to slow down the hypothermia and gain
+      advantage.
+    </p>
+    <p
+      class="seasoninfo"
+      style="font-size: 15px; text-decoration: underline"
+      id="disasterWarning"
+    >
+      !Slower-healing large dinosaurs are more vulnerable, making it crucial
+      to seek safety!
+    </p>
+  </div>
+</section>
     <!-- Banner info end -->
 
     <!-- Inventory type selection -->
@@ -171,6 +159,19 @@
     <section class="inventory">
       <div class="active" role="tablist" data-tabid="mutations">
         <div class="mutations">
+          <!-- New mutation slot card -->
+          <div id="newmutation">
+            <div id="mutbutton">
+              <a href="{{ url_for('page_mutations') }}">
+                <i
+                  class="fa-solid fa-plus fa-fade fa-fade fa-xs"
+                  style="--fa-animation-duration: 0.8s; --fa-fade-opacity: 0.4"
+                ></i>
+                New Mutation
+              </a>
+            </div>
+          </div>
+          <!-- New mutation slot card end -->
           {% for mutation in mutations %}
           <div class="mutationcard">
             <h3>
@@ -203,19 +204,6 @@
             </div>
           </div>
           {% endfor %}
-          <!-- New mutation slot card -->
-          <div id="newmutation">
-            <div id="mutbutton">
-              <a href="{{ url_for('page_mutations') }}">
-                <i
-                  class="fa-solid fa-plus fa-fade fa-fade fa-xs"
-                  style="--fa-animation-duration: 0.8s; --fa-fade-opacity: 0.4"
-                ></i>
-                New Mutation
-              </a>
-            </div>
-          </div>
-          <!-- New mutation slot card end -->
         </div>
       </div>
 
@@ -239,7 +227,8 @@
     </section>
 
     <script>
-      window.active_role = {{ active_role|safe }};
+      // Java doesn't like that ig but it's fine
+      window.active_role = {{ active_role|safe }}; 
     </script>
     <!-- Custom JavaScript contents file -->
     <script src="{{ url_for('static', filename='contentsections.js') }}"></script>

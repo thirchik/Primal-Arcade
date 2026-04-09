@@ -26,45 +26,43 @@
       type="text/css"
       href="{{ url_for('static', filename='welcomepage.css') }}"
     />
-    <title>Astral Arcade</title>
+    <title>Primal Arcade Server</title>
   </head>
   <body>
-    <!-- TV frame with server name n stuff start -->
-    <section>
-      <div id="frame">
-        <div id="stardeco">
-          <img
-            src="{{ url_for('static', filename='Images/striking-star.png') }}"
-            alr="striking-star-deco"
-          />
-        </div>
-        <!-- TV screen with info -->
-        <div>
-          <!-- Text within the screen -->
-          <p id="astralogo">
-            Astral<br />
-            Arcade<br />
-            <span id="subheader"> Semi-Realism Server </span>
-          </p>
-        </div>
-        <div id="stardeco2">
-          <img
-            src="{{ url_for('static', filename='Images/flaming-star.png') }}"
-            alt="flaming_star_deco"
-          />
+  <!-- Main Content Container -->
+  <div class="hero">
+    <!-- TV Frame Section -->
+    <section class="tv-section" aria-label="Server Information Display">
+      <div class="tv-frame" id="frame">
+        <div class="tv-screen-content">
+          <header class="tv-header">
+            <h1>PRIMAL ARCADE</h1>
+            <p class="server-info loader-line">
+              <span class="server-type">Semi-Realism Server</span>
+              <span class="game-name">[Path of Titans]</span>
+            </p>
+          </header>
+          
+          <div class="terminal-loader" aria-label="System loading status">
+            <div class="loader-line">Connecting to database...</div>
+            <div class="loader-line">Retrieving stardust data... [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 386 records</div>
+            <div class="loader-line">Loading habitat information... COMPLETE</div>
+            <div class="loader-line">Parsing mutation patterns... ██████████ 100%</div>
+            <div class="loader-line">Data loaded successfully!</div>
+          </div>
         </div>
       </div>
     </section>
-    <!-- TV frame end -->
-    <!-- Enter button to the next page -->
-    <section>
-      <a id="button" href="{{ url_for('page_main') }}">
-        <i
-          class="fa-sharp fa-solid fa-chevron-right fa-fade"
-          style="--fa-animation-duration: 0.8s; --fa-fade-opacity: 0.4"
-        ></i>
-        Enter
+
+    <!-- Call to Action Section -->
+    <section class="cta-section" aria-label="Enter Server">
+      <a class="button" href="{{ url_for('page_main') }}" aria-label="Enter the server">
+        <i class="fa-sharp fa-solid fa-chevron-right fa-fade" 
+           style="--fa-animation-duration: 0.8s; --fa-fade-opacity: 0.4"
+           aria-hidden="true"></i>
+        <span>Enter</span>
       </a>
     </section>
-  </body>
+  </div>
+</body>
 </html>

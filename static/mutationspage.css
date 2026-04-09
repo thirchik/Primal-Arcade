@@ -1,31 +1,108 @@
+/* Base styles */
 body {
-  background-color: #0f0f0f;
+  background-image: radial-gradient(
+    circle at 65% center,
+    rgba(40, 40, 60, 1) 30%,
+    rgba(0, 0, 0, 1) 61%
+  );
   display: flex;
   justify-content: flex-start;
   margin: 0px;
   padding: 0px;
-  height: 100vh;
+  min-height: 100vh;
+  animation: FadeIn 0.8s ease-out forwards;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes FadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .mut-display-tab {
-  height: 100%;
-  background-image: linear-gradient(
-    360deg,
-    rgba(47, 36, 38, 1) 0%,
-    rgba(11, 8, 8, 1) 100%
-  );
+  height: 100vh;
+  background-image: url("/static/Images/fire-particles-background.png.jpeg");
+  background-size: cover;
   display: flex;
   flex-direction: column;
   padding: 10px;
+  overflow: hidden;
+  scrollbar-width: none;
+  align-items: center;
 }
 
-.mut-spin-message {
-  background-color: #8c2020;
-  font-size: 1.5rem;
+.content {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+}
+
+.mut-tv-screen {
+  width: 100%;
+  height: auto;
+  min-height: 700px;
+  border-image: url("/static/Images/tv-frame.png") 50 / 40px;
+  background-image: url("/static/Images/glitch-effect.gif");
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Wrapper for currency to stay at top */
+.currency-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Center container for the display text */
+.display-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* Keep spin button at bottom */
+.spin-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+h1 {
+  font-family: "Honk", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "MORF" 15, "SHLN" 50;
+  font-size: clamp(40px, 8vw, 120px);
+  text-shadow: 0px 10px 0px #ffffff;
   text-align: center;
-  padding-block: 0.5rem;
-  margin-block: 0.25rem;
-  font-family: "Silkscreen", serif;
+}
+
+h2 {
+  font-family: "Jersey 25", serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #fff;
+  font-size: clamp(30px, 5vw, 65px);
+  text-shadow: 0px 0px 20px #ffffff;
+  text-align: center;
 }
 
 .mut-card {
@@ -83,105 +160,106 @@ body {
   line-height: 30px;
 }
 
-.mut-tv-screen {
+.mut-spin-message {
+  background-color: #8c2020;
+  font-size: clamp(1.2rem, 4vw, 1.5rem);
+  text-align: center;
+  padding-block: 0.5rem;
+  margin-block: 0.25rem;
   width: 100%;
-  height: 80%;
-  border-image: url("/static/Images/tv-frame.png") 50 / 40px;
-  background-image: url("/static/Images/glitch-effect.gif");
-  background-size: cover;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  line-height: 20px;
+  max-width: 350px;
+  font-family: "Silkscreen", serif;
 }
 
-h1 {
-  font-family: "Honk", system-ui;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-  font-variation-settings: "MORF" 15, "SHLN" 50;
-  font-size: 120px;
-  text-shadow: 0px 10px 0px #ffffff;
-}
-
-h2 {
-  font-family: "Jersey 25", serif;
-  font-weight: 400;
-  font-style: normal;
-  color: #fff;
-  font-size: 65px;
-  text-shadow: 0px 0px 20px #ffffff;
-}
-
-.content {
+.main-menu-link {
+  background-color: transparent;
+  border: solid 2px #c92525;
+  box-shadow: 
+    0 0 10px #ec4f4f,
+    inset 0 0 8px #ec4f4f;
+  font-size: clamp(1.2rem, 4vw, 1.5rem);
+  text-align: center;
+  padding-block: 0.5rem;
+  margin-block: 0.25rem;
+  font-family: "Silkscreen", serif;
   width: 100%;
-  display: flex;
-  flex-direction: column;
+  max-width: 150px;
+  padding: 7px;
+  box-sizing: border-box;
+}
+
+.link {
+  font-size: 20px;
+  color: #ffffff;
+  text-shadow: 0px 0px 5px #ffffff;
+  text-decoration: none;
+  display: block;
+  width: 100%;
 }
 
 .spin-section {
-  height: 20%;
+  height: auto;
+  min-height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.spinning-button {
+  width: 280px;
+  height: 90px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.spinning-button {
-  width: 250px;
-  height: 80px;
-}
-
-button {
-  padding: 0px;
-  margin: 0px;
-  box-shadow: 10px 10px rgba(120, 194, 255, 1),
-    -10px -10px rgba(255, 125, 218, 1);
-  border: none;
-  cursor: pointer;
-}
-
-button p {
+#spin-button {
   margin: 0;
-  background-image: linear-gradient(
-    90deg,
-    rgba(255, 125, 218, 1) 0%,
-    rgba(255, 244, 160, 1) 23%,
-    rgba(185, 255, 124, 1) 49%,
-    rgba(120, 194, 255, 1) 76%,
-    rgba(76, 84, 255, 1) 100%
-  );
-  background-clip: text;
-  color: transparent;
-  -webkit-text-stroke: 1.5px rgb(0, 0, 0);
+  background-color: transparent;
+  border: solid 2px #c92525;
+  box-shadow: 
+    0 0 10px #ec4f4f,
+    inset 0 0 8px #ec4f4f;
+  transition: all 0.3s ease;
+  color: #ffffff;
+  text-shadow: 0px 0px 6px #ffffff;
   font-family: "Silkscreen", serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 40px;
+  font-size: 45px;
+  color: #fff;
+  cursor: pointer;
+  padding: 10px 20px;
+  white-space: nowrap;
 }
 
-button:hover {
-  background-image: linear-gradient(
-    90deg,
-    rgba(255, 125, 218, 0.3) 0%,
-    rgba(255, 244, 160, 0.3) 23%,
-    rgba(185, 255, 124, 0.3) 49%,
-    rgba(120, 194, 255, 0.3) 76%,
-    rgba(76, 84, 255, 0.3) 100%
-  );
+#spin-button:hover {
+  transform: scale(1.05);
+  box-shadow: 
+    0 0 15px #ff6464,
+    inset 0 0 12px #ff6464;
+}
+
+#spin-button:focus-visible {
+  outline: 2px solid #c92525;
+  outline-offset: 2px;
 }
 
 .currency-corner {
   width: 90%;
-  height: 30%;
+  height: auto;
   display: flex;
   gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: left;
+  padding: 20px;
 }
 
 .currency {
-  width: 300px;
-  height: 60px;
+  width: clamp(250px, 40vw, 300px);
+  height: auto;
+  min-height: 35px;
   background-color: #8c2020;
   box-shadow: 8px 8px #fff;
   font-family: "Silkscreen", serif;
@@ -192,11 +270,23 @@ button:hover {
   justify-content: space-evenly;
   flex-direction: row;
   align-items: center;
+  gap: 10px;
+  padding: 10px;
+}
+
+.currency p {
+  margin: 0;
+  font-size: clamp(14px, 3vw, 16px);
+}
+
+.currency img {
+  width: clamp(20px, 4vw, 27px);
+  height: auto;
 }
 
 #currency-select {
   background-color: #8c2020;
-  min-width: 50px;
+  min-width: 35px;
   color: #fff;
   border: none;
   cursor: pointer;
@@ -204,6 +294,176 @@ button:hover {
   font-family: "Geo", serif;
   font-weight: 700;
   font-style: normal;
-  font-size: 17px;
+  font-size: clamp(14px, 3vw, 17px);
   box-shadow: 3px 3px 0px #fff;
+}
+
+#mutations-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+  max-height: calc(100vh - 100px);
+  padding: 10px;
+}
+
+/* ===== RESPONSIVE BREAKPOINTS ===== */
+
+/* Tablet screens (768px - 1024px) */
+@media (max-width: 1024px) {
+  body {
+    flex-direction: column;
+  }
+  
+  .mut-display-tab {
+    max-width: 100%;
+    min-height: auto;
+    order: 2;
+  }
+  
+  .content {
+    order: 1;
+  }
+  
+  #mutations-container {
+    max-height: 400px;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+  
+  .mut-card,
+  .pend-mut-card {
+    min-width: 280px;
+    flex-shrink: 0;
+  }
+}
+
+/* Mobile screens (480px - 768px) */
+@media (max-width: 768px) {
+  .mut-tv-screen {
+    min-height: 400px;
+    padding: 15px;
+  }
+  
+  .currency-corner {
+    gap: 1rem;
+  }
+  
+  .currency {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .spinning-button {
+    width: 200px;
+    min-height: 60px;
+  }
+  
+  button p {
+    padding: 15px;
+  }
+  
+  #mutations-container {
+    max-height: 300px;
+  }
+  
+  .mut-card,
+  .pend-mut-card {
+    min-width: 250px;
+  }
+}
+
+/* Small mobile screens (below 480px) */
+@media (max-width: 480px) {
+  .mut-tv-screen {
+    min-height: 300px;
+    padding: 10px;
+  }
+  
+  h1 {
+    text-shadow: 0px 5px 0px #ffffff;
+  }
+  
+  .currency {
+    box-shadow: 4px 4px #fff;
+  }
+  
+  .spinning-button {
+    width: 180px;
+  }
+  
+  button p {
+    font-size: 20px;
+    padding: 10px;
+  }
+  
+  .mut-card p {
+    font-size: 16px;
+  }
+  
+  .pend-mut-card p {
+    font-size: 14px;
+  }
+  
+  .mut-spin-message {
+    font-size: 1rem;
+  }
+  
+  #mutations-container {
+    max-height: 250px;
+  }
+  
+  .mut-card,
+  .pend-mut-card {
+    min-width: 220px;
+  }
+}
+
+/* Landscape mode for mobile */
+@media (max-width: 900px) and (orientation: landscape) {
+  body {
+    flex-direction: row;
+  }
+  
+  .mut-display-tab {
+    max-width: 35%;
+    min-height: 100vh;
+  }
+  
+  .content {
+    max-width: 65%;
+  }
+  
+  #mutations-container {
+    max-height: calc(100vh - 100px);
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  
+  .mut-card,
+  .pend-mut-card {
+    min-width: 100%;
+  }
+  
+  .mut-tv-screen {
+    min-height: 300px;
+  }
+}
+
+/* Extra large screens (above 1440px) */
+@media (min-width: 1440px) {
+  .mut-display-tab {
+    max-width: 450px;
+  }
+  
+  .mut-card,
+  .pend-mut-card {
+    max-width: 400px;
+  }
+  
+  .currency {
+    width: 350px;
+  }
 }

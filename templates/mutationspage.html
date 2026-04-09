@@ -21,12 +21,15 @@
       src="https://kit.fontawesome.com/6d75f4ef37.js"
       crossorigin="anonymous"
     ></script>
-    <title>Astral Arcade</title>
+    <title>Primal Arcade</title>
   </head>
   <body>
     <!-- Display tab with mutation cards -->
     <section class="mut-display-tab" id="mutations-container">
       <p class="mut-spin-message">Your spin log</p>
+      <p class="main-menu-link">
+        <a href="{{ url_for('page_main') }}" class="link">Main Menu</a>
+      </p>
       <!-- Current mutation pending card -->
       <div class="pend-mut-card" id="pending-card" style="visibility: hidden">
         <p>
@@ -38,60 +41,60 @@
     <div class="content">
       <!-- Mutation spinning TV screen -->
       <section class="mut-tv-screen">
-        <div class="currency-corner">
-          <div class="currency-block">
-            <div class="currency">
-              <img
-                src="{{ url_for('static', filename='Images/dna.png') }}"
-                alt="dna-image"
-                width="27"
-                height="27"
-              />
-              <p id="dna-amount">{{ user.dna_amount }}</p>
-              <img
-                src="{{ url_for('static', filename='Images/rna.png') }}"
-                alt="rna-image"
-                width="25"
-                height="25"
-              />
-              <p id="rna-amount">{{ user.rna_amount }}</p>
-              <img
-                src="{{ url_for('static', filename='Images/stardust.png') }}"
-                alt="stardust-image"
-                width="27"
-                height="27"
-              />
-              <p id="stardust-amount">{{ user.stardust_amount }}</p>
-            </div>
-          </div>
-          <div class="currency-block">
-            <div class="currency">
-              <span>Spin for </span>
-              <select id="currency-select">
-                <option value="dna" selected>DNA</option>
-                <option value="stardust">Stardust</option>
-              </select>
-            </div>
-          </div>
+        <!-- Top: Currency section -->
+  <div class="currency-wrapper">
+    <div class="currency-corner">
+      <div class="currency-block">
+        <div class="currency">
+          <img src="{{ url_for('static', filename='Images/dna.png') }}" alt="dna-image" width="27" height="27" />
+          <p id="dna-amount">{{ user.dna_amount }}</p>
+          <img src="{{ url_for('static', filename='Images/rna.png') }}" alt="rna-image" width="25" height="25" />
+          <p id="rna-amount">{{ user.rna_amount }}</p>
+          <img src="{{ url_for('static', filename='Images/stardust.png') }}" alt="stardust-image" width="27" height="27" />
+          <p id="stardust-amount">{{ user.stardust_amount }}</p>
         </div>
-        <h2 id="progress-display">Press "Spin" to try your luck</h2>
-        <h1 id="result-display" style="visibility: hidden">
-          <span id="result-display-stars">5</span>
-          <img
-            src="{{ url_for('static', filename='Images/mut-star.png') }}"
+      </div>
+      <div class="currency-block">
+        <div class="currency">
+          <span>Spin for </span>
+          <select id="currency-select">
+            <option value="dna" selected>DNA</option>
+            <option value="stardust">Stardust</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+        <!-- Center: Display text -->
+  <div class="display-wrapper">
+    <h2 id="progress-display">Click [Spin] to initiate mutation rolling...</h2>
+    <h1 id="result-display" style="visibility: hidden">
+      <span id="result-display-stars">5</span>
+      <img
+            src="{{ url_for('static', filename='Images/Star-05.png') }}"
             alt="mut-star-image"
             width="100"
-            style="filter: drop-shadow(0 0 0.75rem #ffffffd8)"
+            style="filter: drop-shadow(0 0 0.75rem #ffffffd8); margin-bottom: -15px;"
           />
-          MUTATION
-        </h1>
-      </section>
+      MUTATION
+    </h1>
+  </div>
+
+  <!-- Bottom: Empty spacer to balance (optional) -->
+  <div class="spin-wrapper" style="visibility: hidden;">
+    <!-- This empty div helps push content up -->
+  </div>
+</section>
       <!-- Mutation spinning screen end -->
 
       <!-- Spin button section -->
       <section class="spin-section">
         <button class="spinning-button" id="spin-button">
-          <p>✮ SPIN ✮</p>
+          <p>
+            <i class="fa-sharp fa-solid fa-chevron-right fa-fade" 
+           style="--fa-animation-duration: 0.8s; --fa-fade-opacity: 0.4"
+           aria-hidden="true" style="color: #ffffff;"></i> 
+            SPIN</p>
         </button>
       </section>
     </div>
