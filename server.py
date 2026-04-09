@@ -1,6 +1,7 @@
 from app import app, db
 from flask import jsonify, render_template
 import utility
+import os
 
 @app.route('/')
 def page_index():
@@ -138,4 +139,4 @@ def api_use_item(id: str):
     return item
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=os.environ['PORT'])
